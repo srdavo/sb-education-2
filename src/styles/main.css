@@ -1,0 +1,58 @@
+@import url(theme/colors/blue.css);
+@import url(theme/colors.module.css);
+@import url(theme/tokens.css);
+@import url(theme/typography.module.css);
+
+@import url(components/default-rules.css);
+@import url(components/input.css);
+@import url(components/button.css);
+@import url(components/md-elements.css);
+
+body{
+    margin:0;
+    font-family: "Dm sans", sans-serif;
+    background: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-background);
+
+    width:100%;
+    height: 100svh;
+    height: 100vh;
+}
+#app{
+    height:100%;
+}
+
+.app{
+    display:flex;
+    flex-grow:1;
+    flex-direction:row;
+    height:100%;
+}
+
+main.content{
+    display:flex;
+    flex-direction:column;
+    flex-grow:1;
+}
+
+main.content > *{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding:16px;
+    width:100%;
+    height:100%;
+    box-sizing: border-box;
+}
+
+.material-symbols-rounded.dynamic{
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 16
+    ;
+}
+md-icon {--md-icon-font: 'Material Symbols Rounded'; }
+md-icon.dynamic{--md-icon-size: ; vertical-align: middle;}
+md-icon.filled{font-variation-settings: 'FILL' 1;}
