@@ -1,21 +1,40 @@
 <script setup>
-import { reactive, computed } from 'vue'
+import { reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import LoginForm from '@/components/auth/LoginForm.vue'
+import { useAuth } from '@/composables/useAuth'
 
 const emit = defineEmits(['close'])
+const router = useRouter()
+const { signIn } = useAuth()
 
-// Methods
-function closeModal(){
-    emit('close')
-}
+// State
+const submitting = ref(false)
+const errorMessage = ref('')
 
 const initialValues = reactive({
     email: '',
     password: ''
 })
 
+// Methods
+function closeModal(){
+    emit('close')
+}
+
 async function handleSubmit(values){
-    console.log("Iniciando sesion fake")
+    submitting.value = true
+    errorMessage.value = ''
+
+    try {
+        await signIn(values)
+        emit('close')
+        router.push({ name: 'home' })
+    } catch(error) {
+        errorMessage.value = error.message
+    } finally {
+        submitting.value = false
+    }
 }
 </script>
 <template>
@@ -41,8 +60,13 @@ async function handleSubmit(values){
         
                 <LoginForm 
                     v-bind:initial-values="initialValues"
+                    v-bind:submitting="submitting"
                     v-on:submit="handleSubmit"
                 />
+
+                <span v-if="errorMessage" class="label-large error-text">
+                    {{ errorMessage }}
+                </span>
             </div>
 
         </div>
