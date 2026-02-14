@@ -50,7 +50,7 @@ function openRegisterModal(){
                 <div class="content-container simple-container justify-right direction-column padding-32">
 
                     <div class="simple-container direction-column gap-24 z-index-1">
-                        <span class="main-title">sb education</span>
+                        <span class="main-title">Sialen Game</span>
                         <div class="simple-container gap-8 direction-row-column">
     
                             <button 
