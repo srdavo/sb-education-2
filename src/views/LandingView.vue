@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useModalStore } from '@/stores/modal'
 import LoginModal from '@/components/auth/LoginModal.vue'
+import RegisterModal from '@/components/auth/RegisterModal.vue'
 
 const modalStore = useModalStore()
 
@@ -21,6 +22,21 @@ function openLoginModal(){
      
     )
 }
+
+function openRegisterModal(){
+
+    const originButton = event.currentTarget
+
+    modalStore.open(
+        RegisterModal,
+        {
+            absolute:true
+        },
+        'increased slim h-auto',
+        originButton,
+     
+    )
+}   
 
 </script>
 <template>
@@ -44,6 +60,7 @@ function openLoginModal(){
                                 Iniciar sesión
                             </button>
                             <button 
+                                v-on:click="openRegisterModal"
                                 class="style-7 surface-container rounded weight-500 flex-0-1 simple-container justify-center"
                                 >
                                 Crear cuenta

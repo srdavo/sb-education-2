@@ -51,23 +51,23 @@ function onSubmit(){
 
         <div class="simple-container direction-column gap-8">
 
-            <div class="simple-container direction-column gap-8">
+            <div class="simple-container direction-column gap-4">
                 <span class="label-large outline-text">
                     Correo electrónico
                 </span>
                 <input
                     name="email"
+                    type="email"
                     v-model="form.email"
                     v-bind:class="{error: errors.email }"
                     v-bind:disabled="submitting"
                     v-on:input="clearError('email')"
-                    type="text"
                     max-length="255"
                     required
                 />
             </div>
             
-            <div class="simple-container direction-column gap-8">
+            <div class="simple-container direction-column gap-4">
                 <span class="label-large outline-text">
                    Contraseña
                 </span>
