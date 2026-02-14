@@ -3,13 +3,14 @@ import { supabase } from '@/lib/supabaseClient.js';
 
 import LandingView from '@/views/LandingView.vue';
 import LoginView from '@/views/auth/LoginView.vue';
-
 import HomeView from '@/views/HomeView.vue';
+import PlayView from '@/views/PlayView.vue';
 
 const routes = [
     { path: '/', name: 'landing', component: LandingView, meta: { guestOnly: true } },
     { path: '/login', name: 'login', component: LoginView, meta: { guestOnly: true } },
     { path: '/home', name: 'home', component: HomeView, meta: { requiresAuth: true } },
+    { path: '/play/:level', name: 'play', component: PlayView, meta: { requiresAuth: true } },
 ];
 
 const router = createRouter({
